@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfNavigation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfNavigation"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Height="420"
+        Width="640"
+        Loaded="Window_Loaded"
+        Unloaded="Window_Unloaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <!--<RowDefinition Height="*" />-->
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0"
+              Focusable="False"
+              FontSize="16">
+            <MenuItem Header="File">
+                <MenuItem Name="Collect"
+                          Header="Collect"
+                          Click="Collect_Click" />
+                <MenuItem Name="Exit"
+                          Header="Exit"
+                          Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="Update View">
+                <MenuItem Name="UpdatePage1"
+                          Header="Page1"
+                          Click="UpdatePage1_Click" />
+                <MenuItem Name="UpdatePage2"
+                          Header="Page2"
+                          Click="UpdatePage2_Click" />
+                <MenuItem Name="UpdatePage3"
+                          Header="Page3"
+                          Click="UpdatePage3_Click" />
+            </MenuItem>
+            <MenuItem Header="Navigate">
+                <MenuItem Name="NavigatePage1"
+                          Header="Page1"
+                          Click="NavigatePage1_Click" />
+                <MenuItem Name="NavigatePage2"
+                          Header="Page2"
+                          Click="NavigatePage2_Click" />
+                <MenuItem Name="NavigatePage3"
+                          Header="Page3"
+                          Click="NavigatePage3_Click" />
+            </MenuItem>
+        </Menu>
+
+        <Frame Grid.Row="1"
+               x:Name="ShellFrame"
+               x:FieldModifier="public"
+               Focusable="False"
+               NavigationUIVisibility="Hidden" />
+
+        <!--<ContentControl Grid.Row="1"
+                        x:FieldModifier="public"
+                        x:Name="ShellContentControl"/>-->
+    </Grid>
+</Window>
