@@ -93,8 +93,7 @@ public class NavigationService
             }
             if (frame.Content is INavigationAware navigationAware)
             {
-                if (e.ExtraData != null)
-                    navigationAware.OnNavigatedTo(e.ExtraData);
+                navigationAware.OnNavigatedTo(e.ExtraData);
             }
         }
     }

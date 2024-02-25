@@ -31,7 +31,8 @@ public partial class Page3 : Page, INavigationAware
 
     public void OnNavigatedTo(object parameter)
     {
-        ShareText.Text = parameter?.ToString();
+        if (parameter != null)
+            ShareText.Text = parameter?.ToString();
     }
 
     public void OnNavigatedFrom()
