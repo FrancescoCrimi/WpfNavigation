@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="420"
-        Width="640"
-        Loaded="Window_Loaded"
-        Unloaded="Window_Unloaded">
+        Width="640">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

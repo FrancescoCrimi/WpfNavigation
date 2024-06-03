@@ -10,8 +10,10 @@ using System.Windows;
 using System.Windows.Controls;
 
 namespace WpfNavigation.Pages;
-public partial class Page1 : Page, INavigationAware
+public partial class Page1 : Page, INavigationAware, IDisposable
 {
+    private bool disposedValue;
+
     public Page1()
     {
         InitializeComponent();
@@ -59,15 +61,46 @@ public partial class Page1 : Page, INavigationAware
 
     private void GoPage3_Click(object sender, RoutedEventArgs e)
     {
-        App.NavigationService?.Navigate(new Uri("/Pages/Page3.xaml", UriKind.Relative), "From Page1");
+        //App.NavigationService?.Navigate(new Uri("/Pages/Page3.xaml", UriKind.Relative), "From Page1");
+        App.NavigationService?.Navigate(new Page3(), "From Page1");
     }
 
     private void GoPage2_Click(object sender, RoutedEventArgs e)
     {
-        App.NavigationService?.Navigate(new Uri("/Pages/Page2.xaml", UriKind.Relative), "From Page1");
+        //App.NavigationService?.Navigate(new Uri("/Pages/Page2.xaml", UriKind.Relative), "From Page1");
+        App.NavigationService?.Navigate(new Page2(), "From Page1");
     }
 
     #endregion
 
-    ~Page1() => Debug.Print("Finalizer Page1 {0}", GetHashCode().ToString());
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: eliminare lo stato gestito (oggetti gestiti)
+            }
+
+            // TODO: liberare risorse non gestite (oggetti non gestiti) ed eseguire l'override del finalizzatore
+            // TODO: impostare campi di grandi dimensioni su Null
+            disposedValue = true;
+        }
+    }
+
+    // TODO: eseguire l'override del finalizzatore solo se 'Dispose(bool disposing)' contiene codice per liberare risorse non gestite
+    ~Page1()
+    {
+        Debug.Print("Finalizer Page1 {0}", GetHashCode().ToString());
+        // Non modificare questo codice. Inserire il codice di pulizia nel metodo 'Dispose(bool disposing)'
+        Dispose(disposing: false);
+    }
+
+    public void Dispose()
+    {
+        // Non modificare questo codice. Inserire il codice di pulizia nel metodo 'Dispose(bool disposing)'
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
+    }
 }

@@ -18,7 +18,7 @@ public partial class App : Application
         var window = new MainWindow();
         window.Show();
         NavigationService = new NavigationService(window.ShellFrame);
-        NavigationService.Navigate(new Uri("/Pages/Page1.xaml", UriKind.Relative), "From App");
-        //NavigationService.Navigate(new Page1(), "From App");
+        //NavigationService.Navigate(new Uri("/Pages/Page1.xaml", UriKind.Relative), "From App");
+        NavigationService.Navigate(new Page1(), "From App");
     }
 }

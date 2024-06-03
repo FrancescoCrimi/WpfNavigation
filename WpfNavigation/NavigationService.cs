@@ -6,6 +6,7 @@
 
 using System;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using WpfNavigation.Pages;
 
 namespace WpfNavigation;
@@ -43,19 +44,7 @@ public class NavigationService
         }
     }
 
-    public bool UpdateView(Uri source, object? parameter = null)
-        => Navigate(source, true, parameter);
-
-    public bool Navigate(Uri source, object? parameter = null)
-        => Navigate(source, false, parameter);
-
-    public bool UpdateView(Page content, object? parameter = null)
-        => Navigate(content, true, parameter);
-
-    public bool Navigate(Page content, object? parameter = null)
-        => Navigate(content, false, parameter);
-
-    private bool Navigate(Uri source, bool clearNavigation, object? parameter = null)
+    public bool Navigate(Uri source, object? parameter = null, bool clearNavigation = true)
     {
         if (_frame.CurrentSource != source || parameter != null && !parameter.Equals(_lastParameterUsed))
         {
@@ -67,7 +56,7 @@ public class NavigationService
         return false;
     }
 
-    private bool Navigate(Page content, bool clearNavigation, object? parameter = null)
+    public bool Navigate(Page content, object? parameter = null, bool clearNavigation = true)
     {
         if (_frame.Content != content || parameter != null && !parameter.Equals(_lastParameterUsed))
         {
@@ -79,7 +68,7 @@ public class NavigationService
         return false;
     }
 
-    private void Frame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+    private void Frame_Navigated(object sender, NavigationEventArgs e)
     {
         if (sender is Frame frame)
         {
@@ -98,7 +87,7 @@ public class NavigationService
         }
     }
 
-    private void Frame_Navigating(object sender, System.Windows.Navigation.NavigatingCancelEventArgs e)
+    private void Frame_Navigating(object sender, NavigatingCancelEventArgs e)
     {
         if (sender is Frame frame)
         {
